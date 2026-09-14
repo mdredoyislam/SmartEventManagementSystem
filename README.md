@@ -95,7 +95,70 @@ The application will be accessible at: `http://localhost:8000`
 
 ---
 
-## 🐍 Local Development Setup (Without Docker)
+## 🐧 Ubuntu/Linux Installation & Setup
+
+If you are setting up the project on an Ubuntu or Debian-based Linux system natively, follow these steps to install system dependencies, PostgreSQL, and Redis before running the project:
+
+1. **Update System Packages:**
+   ```bash
+   sudo apt update && sudo apt upgrade -y
+   ```
+
+2. **Install System Dependencies (Python, PostgreSQL, Redis):**
+   ```bash
+   sudo apt install -y python3-pip python3-venv python3-dev libpq-dev postgresql postgresql-contrib redis-server
+   ```
+
+3. **Configure PostgreSQL:**
+   Access the PostgreSQL prompt and create a database and user:
+   ```bash
+   sudo -u postgres psql
+   ```
+   ```sql
+   CREATE DATABASE evently_db;
+   CREATE USER evently_user WITH PASSWORD 'your_password';
+   ALTER ROLE evently_user SET client_encoding TO 'utf8';
+   ALTER ROLE evently_user SET default_transaction_isolation TO 'read committed';
+   ALTER ROLE evently_user SET timezone TO 'UTC';
+   GRANT ALL PRIVILEGES ON DATABASE evently_db TO evently_user;
+   \q
+   ```
+
+4. **Setup Virtual Environment:**
+   ```bash
+   python3 -m venv .venv
+   source .venv/bin/activate
+   ```
+
+5. **Install Python Dependencies:**
+   ```bash
+   cd backend
+   pip install -r requirements/development.txt
+   ```
+
+6. **Environment Setup:**
+   ```bash
+   cp ../.env.example ../.env
+   ```
+   *(Edit the `.env` file and set the `DATABASE_URL` to match your PostgreSQL credentials: `DATABASE_URL=postgres://evently_user:your_password@localhost:5432/evently_db`)*
+
+7. **Run Migrations & Start Server:**
+   ```bash
+   python manage.py migrate
+   python manage.py createsuperuser
+   python manage.py runserver
+   ```
+
+8. **Start Celery Worker (In a separate terminal):**
+   ```bash
+   # Make sure your virtual environment is activated
+   cd backend
+   celery -A config.celery worker -l info
+   ```
+
+---
+
+## 🐍 Local Development Setup (Windows/Mac Without Docker)
 
 If you prefer to run the project natively using a virtual environment:
 
