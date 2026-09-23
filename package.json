@@ -1,0 +1,23 @@
+{
+  "name": "eventmanagement",
+  "version": "1.0.0",
+  "description": "![Evently](https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=green) ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white) ![Redis](https://img.shields.io/badge/redis-%23DD0031.svg?&style=for-the-badge&logo=redis&logoColor=white) ![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white) ![Celery](https://img.shields.io/badge/celery-%2337814A.svg?&style=for-the-badge&logo=celery&logoColor=white)",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mdredoyislam/SmartEventManagementSystem.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mdredoyislam/SmartEventManagementSystem/issues"
+  },
+  "homepage": "https://github.com/mdredoyislam/SmartEventManagementSystem#readme"
+}
